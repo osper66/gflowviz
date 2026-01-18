@@ -1,0 +1,524 @@
+    #info-pane {
+               position: absolute;
+               top: 10px;
+               right: 10px;
+               z-index: 10;
+               padding: 1em;
+               background: white;
+               text-align: right;
+           }
+       
+       #form {
+           display: none;
+       }
+           	  
+.legendinfo {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    //background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.legendinfo h4 {
+    margin: 0 0 5px;
+    color: #777;
+	}
+.legend {
+background-color: “black”;
+line-height: 25px;
+color: #555;
+width: auto;
+}
+/*	
+.legend {
+      line-height: 18px;
+      color: #555;
+     }
+*/
+     
+.legend i {
+       width: 18px;
+       height: 18px;
+       float: left;
+        margin-right: 8px;
+         opacity: 0.7;
+       }
+
+#currentpos {
+    position: absolute;
+    left: 10px;
+    top: 300px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#dataMng {
+    position: absolute;
+    left: 10px;
+    top: 330px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#dataMngPane {
+    position: absolute;
+    left: 100px;
+    top: 330px;
+    background: white;
+    border: 1px solid blue;
+    cursor: pointer;
+    display:none;
+}
+
+#saveObjects0 {
+    position: absolute;
+    left: 100px;
+    top: 350px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#loadObjects0 {
+    position: absolute;
+    left: 10px;
+    top: 375px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#removeAllObjects0 {
+    position: absolute;
+    left: 10px;
+    top: 400px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#defineAttr {
+    position: absolute;
+    left: 10px;
+    top: 425px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#export_shp0 {
+    position: absolute;
+    left: 10px;
+    top: 450px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#three_d {
+    position: absolute;
+    left: 10px;
+    top: 430px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#three_d_off {
+    position: absolute;
+    left: 10px;
+    top: 430px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+    display:none;
+}
+
+#three_d_on {
+    position: absolute;
+    left: 10px;
+    top: 475px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#query {
+    position: absolute;
+    left: 10px;
+    top: 500px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#queryPane {
+    position: absolute;
+    left: 100px;
+    top: 500px;
+    background: white;
+    border: 1px solid blue;
+    cursor: pointer;
+    display: none;
+}
+
+
+#geoviz {
+    position: absolute;
+    left: 10px;
+    top: 525px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#geovizPane {
+    position: absolute;
+    left: 150px;
+    top: 525px;
+    background: white;
+    border: 1px solid blue;
+    cursor: pointer;
+    display: none;
+}
+
+#street_vw {
+    position: absolute;
+    left: 10px;
+    top: 460px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#street_vw_off {
+    position: absolute;
+    left: 10px;
+    top: 460px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+    display:none;
+}
+
+#geoprocessing {
+    position: absolute;
+    left: 10px;
+    top: 550px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#geoprocessingPane {
+    position: absolute;
+    left: 150px;
+    top: 550px;
+    background: white;
+    border: 2px solid blue;
+    cursor: pointer;
+    display:none;
+}
+
+#analysis {
+    position: absolute;
+    left: 10px;
+    top: 575px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#analysisPane {
+    position: absolute;
+    left: 150px;
+    top: 575px;
+    background: white;
+    border: 2px solid blue;
+    cursor: pointer;
+    display:none;
+}
+
+#geophoto {
+    position: absolute;
+    left: 10px;
+    top: 400px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#remove_geophoto {
+    position: absolute;
+    left: 10px;
+    top: 600px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+    display:none;
+}
+
+#layerMng {
+    position: absolute;
+    left: 10px;
+    top: 360px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#collabo {
+   position: absolute;
+    left: 10px;
+    top: 575px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#recordPane {
+   position: absolute;
+    left: 100px;
+    top: 575px;
+    background: white;
+    border: 2px solid blue;
+    cursor: pointer;
+}
+
+#routemap {
+   position: absolute;
+    left: 10px;
+    top: 600px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+#routeMapPane {
+   position: absolute;
+    left: 150px;
+    top: 600px;
+    background: white;
+    border: 2px solid blue;
+    cursor: pointer;
+}
+
+#modal-content{
+	width:50%;
+	margin:0;
+	padding:10px 20px;
+	border:2px solid #aaa;
+	background:#fff;
+	position:fixed;
+	display:none;
+	z-index:2;
+}
+  
+.button-link{
+	color:#00f;
+	text-decoration:underline;
+}
+ 
+.button-link:hover{
+	cursor:pointer;
+	color:#f00;
+}
+
+
+.blink {
+    animation-duration: 1s;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(2, start);
+}
+@keyframes blink {
+    80% {
+        visibility: hidden;
+    }
+}
+
+.stripe tr:nth-child(even){
+  background-color: #eee;
+}
+
+/* balloon-4 bottom-left */
+#balloon-4-bottom-left {
+	position: relative;
+	display: inline-block;
+	padding: 0 15px;
+	width: auto;
+	min-width: 115px;
+	height: 70px;
+	color: #F6F6F6;
+	line-height: 70px;
+	text-align: center;
+	background: #19283C;
+	border-radius: 60%;
+}
+#balloon-4-bottom-left:before {
+	content: "";
+	position: absolute;
+	bottom: -10px; left: 20px;
+	margin-left: 0;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: #19283C;
+	border-radius: 0 30px 0 30px;
+	z-index: -1;
+}
+#balloon-4-bottom-left:after {
+	content: "";
+	position: absolute;
+	bottom: -5px; left: 30px;
+	margin-left: 0;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: #FFF;
+	border-radius: 0 30px 0 30px;
+	z-index: -1;
+	-webkit-transform: rotate(30deg);
+	   -moz-transform: rotate(30deg);
+	    -ms-transform: rotate(30deg);
+	     -o-transform: rotate(30deg);
+	        transform: rotate(30deg);
+}
+/* balloon-4 bottom-right */
+#balloon-4-bottom-right {
+	position: relative;
+	display: inline-block;
+	padding: 0 15px;
+	width: auto;
+	min-width: 115px;
+	height: 70px;
+	color: #F6F6F6;
+	line-height: 70px;
+	text-align: center;
+	background: #19283C;
+	border-radius: 60%;
+}
+#balloon-4-bottom-right:before {
+	content: "";
+	position: absolute;
+	bottom: -10px; right: 20px;
+	margin-left: 0;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: #19283C;
+	border-radius: 30px 0 30px 0;
+	z-index: -1;
+}
+#balloon-4-bottom-right:after {
+	content: "";
+	position: absolute;
+	bottom: -5px; right: 30px;
+	margin-left: 0;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: #FFF;
+	border-radius: 30px 0 30px 0;
+	z-index: -1;
+	-webkit-transform: rotate(-30deg);
+	   -moz-transform: rotate(-30deg);
+	    -ms-transform: rotate(-30deg);
+	     -o-transform: rotate(-30deg);
+	        transform: rotate(-30deg);
+}
+
+
+.balloon {
+  position: relative;
+  width: 200px;
+  height: 30px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 60%;
+}
+.balloon:before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 70%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #ccc;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+ }
+.balloon:after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 70%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #fff;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.balloon_me {
+  position: relative;
+  width: 200px;
+  height: 30px;
+  border: 1px solid #ccc;
+  color: #f600
+  background-color: #fff;
+  text-align: center;
+  border-radius: 60%;
+}
+.balloon_me:before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 30%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #ccc;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  
+  
+  
+}
+.balloon_me:after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 30%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #fff;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+    
+}
+
+table, tr, td {
+    border-collapse: collapse;
+    padding: 0;
+}
+
+input[type=text] {
+  font-size: 16px;
+  transform: scale(0.8);
+}
+
+body { -webkit-touch-callout: none !important; }
+a { -webkit-user-select: none !important; }
+		
+
+
+

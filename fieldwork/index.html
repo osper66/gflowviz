@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>フィールドワーク GeoWeb Mobile</title>
+	<meta charset="utf-8" />
+	<!--
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	-->
+	<!--
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+	-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<!--
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+	-->
+<!-- 	i18n -->
+		<script src="lib/i18next.min.js" ></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/1.0.1/i18nextBrowserLanguageDetector.min.js" ></script>
+		
+		<script src="lib/ini/i18nsetup.js"></script>
+		
+ <!-- leaflet -->
+<!--
+ <link rel="stylesheet" href="leaflet151/leaflet.css"/>
+ <script src="leaflet151/leaflet.js"></script>
+--> 
+ 
+ <!--
+  <link rel="stylesheet" href="leaflet171/leaflet.css"/>
+ <script src="leaflet171/leaflet.js"></script>
+ -->
+ 
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+ 
+<!-- jquery -->
+<link type="text/css" rel="stylesheet"
+href="https://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script src="/field_work_libs/jquery.japanese-input-change-master/jquery.japanese-input-change.js"></script>
+
+<!--
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+-->
+<!-- mobile touch -->
+<!-- https://github.com/RWAP/jquery-ui-touch-punch -->
+<!--
+<script src="/field_work_libs/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js"></script>
+-->
+<script src="/field_work_libs/jquery-ui-touch-punch-master/jquery.ui.touch-punch.js"></script>
+
+<script src="/field_work_libs/jquery/jquery.xdomainajax.js"></script>
+<script src="/field_work_libs/jquery/jquery.event.drag-2.2.js"></script>
+
+ <!-- ajax for geojson -->
+    <script type="text/javascript" src="/field_work_libs/leaflet-ajax-gh-pages/dist/leaflet.ajax.js"></script>
+    
+    <!-- flatgeobuf -->
+    <!--
+    <script src="https://unpkg.com/flatgeobuf@3.17.3/dist/flatgeobuf-geojson.min.js"></script>
+    -->
+    
+ <!-- Leaflet.draw --> 
+    <script src="Leaflet.draw-develop/src/Leaflet.draw.js"></script>
+    <script src="Leaflet.draw-develop/src/Leaflet.Draw.Event.js"></script>
+    <link rel="stylesheet" href="Leaflet.draw-develop/src/leaflet.draw.css"/>
+
+    <script src="Leaflet.draw-develop/src/Toolbar.js"></script>
+    <script src="Leaflet.draw-develop/src/Tooltip.js"></script>
+
+    <script src="Leaflet.draw-develop/src/ext/GeometryUtil.js"></script>
+    <script src="Leaflet.draw-develop/src/ext/LatLngUtil.js"></script>
+    <script src="Leaflet.draw-develop/src/ext/LineUtil.Intersect.js"></script>
+    <script src="Leaflet.draw-develop/src/ext/Polygon.Intersect.js"></script>
+    <script src="Leaflet.draw-develop/src/ext/Polyline.Intersect.js"></script>
+    <script src="Leaflet.draw-develop/src/ext/TouchEvents.js"></script>
+
+    <script src="Leaflet.draw-develop/src/draw/DrawToolbar.js"></script>
+    <script src="Leaflet.draw-develop/src/draw/handler/Draw.Feature.js"></script>
+    <script src="Leaflet.draw-develop/src/draw/handler/Draw.SimpleShape.js"></script>
+    <script src="Leaflet.draw-develop/src/draw/handler/Draw.Polyline.js"></script>
+    <script src="Leaflet.draw-develop/src/draw/handler/Draw.Marker.js"></script>
+    <script src="Leaflet.draw-develop/src/draw/handler/Draw.Circle.js"></script>
+    <script src="Leaflet.draw-develop/src/draw/handler/Draw.CircleMarker.js"></script>
+    <script src="Leaflet.draw-develop/src/draw/handler/Draw.Polygon.js"></script>
+    <script src="Leaflet.draw-develop/src/draw/handler/Draw.Rectangle.js"></script>
+
+    <script src="Leaflet.draw-develop/src/edit/EditToolbar.js"></script>
+    <script src="Leaflet.draw-develop/src/edit/handler/EditToolbar.Edit.js"></script>
+    <script src="Leaflet.draw-develop/src/edit/handler/EditToolbar.Delete.js"></script>
+
+    <script src="Leaflet.draw-develop/src/Control.Draw.js"></script>
+
+    <script src="Leaflet.draw-develop/src/edit/handler/Edit.Poly.js"></script>
+    <script src="Leaflet.draw-develop/src/edit/handler/Edit.SimpleShape.js"></script>
+    <script src="Leaflet.draw-develop/src/edit/handler/Edit.Rectangle.js"></script>
+    <script src="Leaflet.draw-develop/src/edit/handler/Edit.Marker.js"></script>
+    <script src="Leaflet.draw-develop/src/edit/handler/Edit.CircleMarker.js"></script>
+    <script src="Leaflet.draw-develop/src/edit/handler/Edit.Circle.js"></script>
+   
+    <!-- Leaflet.draw.drag -->
+    
+   <script src="Leaflet.Path.Drag-master/dist/L.Path.Drag.js"></script>
+   
+    	 <!-- Leaflet.draw.drag -->
+    	 <!--
+    	   <script src="Leaflet.draw.drag-master/dist/Leaflet.draw.drag-src.js"></script>
+    	   -->
+   
+    <script src="Leaflet.draw.drag-master/src/Edit.Poly.Drag.js"></script>
+    <script src="Leaflet.draw.drag-master/src/Edit.SimpleShape.Drag.js"></script>
+   
+  <!-- Leaflet.illustrate -->
+  <link rel="stylesheet" href="/field_work_libs/Leaflet.Illustrate-master/dist/Leaflet.Illustrate.css"/>
+  <script src= "/field_work_libs/Leaflet.Illustrate-master/dist//Leaflet.Illustrate.js"></script>
+  
+  <!-- Leaflet.styleeditor -->
+   <link rel="stylesheet" href="/field_work_libs/Leaflet.StyleEditor-master/dist/css/Leaflet.StyleEditor.css"/>
+  <script src= "/field_work_libs/Leaflet.StyleEditor-master/dist/javascript/Leaflet.StyleEditor.js"></script>
+  
+  <!-- overview map -->
+  <link rel="stylesheet" href="/field_work_libs/Leaflet-MiniMap-master/src/Control.MiniMap.css" />
+  <script src="/field_work_libs/Leaflet-MiniMap-master/src/Control.MiniMap.js" type="text/javascript"></script>
+  
+  <!-- geocoding -->
+	<script src="libs/L.GeoSearch-develop/src/js/l.control.geosearch.csis.js"></script>
+	<script src="libs/L.GeoSearch-develop/src/js/l.geosearch.provider.csis.js"></script>
+				
+	<link rel="stylesheet" href="libs/L.GeoSearch-develop/src/css/l.geosearch.css" />
+	
+	<script src="https://cdn.geolonia.com/community-geocoder.js"></script>
+	
+	<!--
+	<script src="/field_work_libs/L.GeoSearch-develop/src/js/l.control.geosearch.csis.js"></script>
+	<script src="/field_work_libs/L.GeoSearch-develop/src/js/l.geosearch.provider.csis.js"></script>
+				
+	<link rel="stylesheet" href="/field_work_libs/L.GeoSearch-develop/src/css/l.geosearch.css" />
+	-->
+	
+<!-- distance/area measurement -->
+ <link rel="stylesheet" href="/field_work_libs/leaflet-measure-master/dist/leaflet-measure.css" />
+ 
+ <script src="/field_work_libs/leaflet-measure-master/dist/leaflet-measure.js"></script>
+ 
+<!-- maker icons -->
+ <script type="text/javascript" src="/field_work_libs/leaflet.sprite-gh-pages/dist/leaflet.sprite.js"></script> 
+ 
+ <!-- restore view -->
+<script src="/field_work_libs/Leaflet.RestoreView-master/leaflet.restoreview.js"></script>
+	
+    <!--
+	<script src="/field_work_libs/leaflet-realtime-master/src/L.Realtime.js"></script>
+     -->
+	<!-- history -->
+    <link rel="stylesheet" type="text/css" href="/field_work_libs/leaflet-history-master/dist/leaflet-history.css">
+	<script type="text/javascript" src="/field_work_libs/leaflet-history-master/dist/leaflet-history.js"></script>
+	<!-- font-awesome -->	
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+	
+<!-- bookmarks -->
+      <link rel="stylesheet" href="/field_work_libs/Leaflet.Bookmarks-master/dist/leaflet.bookmarks.css" />
+	  <script src="/field_work_libs/Leaflet.Bookmarks-master/dist/Leaflet.Bookmarks.js"></script>
+<script src="lib/bookmarks/config.js"></script>
+
+<!-- geocoding -->
+<script src="lib/query/geocoding/config.js"></script> 
+
+<!-- common -->
+<!--
+ <link rel="stylesheet" type="text/css" href="styles.css">
+ -->
+<script src="lib/commons/layerManager.js"></script>
+<script src="lib/commons/convertCircleToPolygon.js"></script>
+<script src="lib/commons/initproj.js"></script>
+<script src="lib/commons/setMiniMap.js"></script>
+
+<!-- side menu -->
+ <link rel="stylesheet" href="/field_work_libs/Leaflet.SlideMenu-master/src/L.Control.SlideMenu.css">
+  <script src="/field_work_libs/Leaflet.SlideMenu-master/src/L.Control.SlideMenu.js"></script>
+  <script src="lib/ui/config.js"></script> 
+  
+  <!-- switch geometry tool -->
+  <script src="lib/ui/switchGeometryTool.js"></script>
+                
+<!--layer manager -->
+<script src="lib/layers_mng/config.js"></script>
+<script src="lib/layers_mng/showLayerManager.js"></script>
+<script src="lib/layers_mng/setupFunctions.js"></script>
+<script src="lib/layers_mng/showLayerManager0.js"></script>
+<script src="lib/layers_mng/appendLayer.js"></script>
+<script src="lib/layers_mng/events.js"></script>
+<script src="lib/layers_mng/selFaturesManager.js"></script>
+
+<script src="lib/layers_mng/changeEditedLayer/changeEditedLayer.js"></script>
+
+<!--
+<script src="lib/layers_mng/showTable/showTableForMobile.js"></script>
+-->
+
+<script src="lib/layers_mng/showTable/showTableForMobileWithFilter.js"></script>
+
+<!--
+<script src="lib/layers_mng/switchGeometryTool.js"></script>
+-->
+
+<script src="lib/layers_mng/createAttrDataList.js"></script>
+
+<script src="lib/layers_mng/createAttrDataListForDB.js"></script>
+
+<!--
+<script src="lib/layers_mng/stylesd/config.js"></script>
+<script src="lib/layers_mng/stylesd/setStyles.js"></script>
+-->
+
+<!--delete layer -->
+<script src="lib/layers_mng/deleteLayer/deleteLayer.js"></script>
+
+<!--layer style -->
+<script src="lib/layers_mng/style/config.js"></script>
+<script src="lib/layers_mng/style/setStyle.js"></script>
+
+<!-- data management -->
+<script src="lib/data_mng/config.js"></script>
+
+<!-- indexeddb management -->
+<script src="lib/data_mng/indexeddb/config.js"></script>
+<script src="lib/data_mng/indexeddb/buildAttrListFromDB.js"></script>
+
+<!-- samples -->
+<script src="lib/data_mng/samples/config.js"></script>
+
+<!-- common functions -->
+ <script src="lib/displayInfoPanel.js"></script>
+ 
+ <!-- leaflet dialog -->
+ <link rel="stylesheet" type="text/css" href="/field_work_libs/Leaflet.Dialog-master/Leaflet.Dialog.css">
+  <script src="/field_work_libs/Leaflet.Dialog-master/Leaflet.Dialog.js"></script>
+ 
+<!-- load and save env -->
+<script src="lib/webobject/saveWebObject.js"></script>
+<script src="lib/webobject/loadWebObject.js"></script>
+
+<script src="lib/webobject/exportWebObjects.js"></script>
+<script src="lib/webobject/importWebObjects.js"></script>
+
+<script src="lib/webobject/saveLastLegend.js"></script>
+<script src="lib/webobject/loadLastLegend.js"></script>
+
+<!-- attributes mng -->
+  <link rel="stylesheet" type="text/css" href="lib/attributes/styles.css">
+	
+<script src="lib/attributes/config.js"></script>
+
+<!--
+<script src="lib/attributes/config_reedit.js"></script>
+-->
+<script src="lib/attributes/form/createForms.js"></script>
+<script src="lib/attributes/form/createDataEntryForm.js"></script>
+
+<script src="lib/attributes/edit/config.js"></script>
+<script src="lib/attributes/edit/selectEditor.js"></script>
+
+<script src="lib/attributes/edit/reNameField.js"></script>
+<script src="lib/attributes/edit/changeFieldType.js"></script>
+<script src="lib/attributes/edit/changeDefaultValue.js"></script>
+
+<script src="lib/attributes/template/buildTemplates.js"></script>
+
+<!-- I/O -->
+<!-- imports and exports -->  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
+
+ <link rel="stylesheet" type="text/css" href="lib/import_export/styles.css">
+<script src="lib/import_export/export.js"></script>
+<script src="lib/import_export/dragAndDropImport.js"></script>
+<!--
+<script src="lib/import_export/importShape.js"></script>
+-->
+<script src="lib/import_export/importZippedShape.js"></script>
+<script src="lib/import_export/exportZippedfile.js"></script>
+<script src="lib/import_export/importEnvironment.js"></script>
+<script src="lib/import_export/exportEnvironment.js"></script>
+
+<script src="lib/import_export/env/importWebObjectsByDD.js"></script>
+
+<!-- CSV -->
+<script src="lib/import_export/csv/importCSV.js"></script>
+<script src="lib/import_export/csv/showCSVTable.js"></script>
+<script src="lib/import_export/csv/createGeoFeaturesFromCSVwithGeocoding.js"></script>
+<script src="lib/import_export/csv/joinTable.js"></script>
+
+<!-- XLSX -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+
+<script src="lib/import_export/xlsx/importXLSX.js"></script>
+<script src="lib/import_export/xlsx/showXLSXTable.js"></script>
+<script src="lib/import_export/xlsx/createGeoFeaturesFromXLSX.js"></script>
+<script src="lib/import_export/xlsx/createGeoFeaturesFromXLSXwithGeocoding.js"></script>
+
+<!-- geojson -->
+<script src="lib/import_export/geojson/importGeoJSON.js"></script>
+<script src="lib/import_export/geojson/createGeoJSONTileLayer.js"></script>
+
+<!-- encoding -->
+<script src="/field_work_libs/encoding.js-master/encoding.js"></script>
+
+<!-- shapefiles -->
+<script type="text/javascript" src="/field_work_libs/shapefile-js-gh-pages/dist/shp.js"></script>
+<script type="text/javascript" src="/field_work_libs/shapefile-js-gh-pages/dist/catiline.js"></script>
+
+<script src="lib/import_export/shp/importZippedShape.js"></script>
+
+<script src="lib/import_export/shp/importZippedShapeAsTile.js"></script>
+
+<!-- shp-write  -->
+<script type="text/javascript" src="/field_work_libs/shp-write-master/shpwritesj.js"></script>
+
+<!-- vector tile layer-->
+  <script src="https://unpkg.com/leaflet.vectorgrid@1.3.0/dist/Leaflet.VectorGrid.bundled.min.js"></script>
+  
+  <script src="lib/layers_mng/vectortile/config.js"></script>
+  
+   <script src="lib/layers_mng/vectortile/fude/config.js"></script>
+    
+   <script src="lib/layers_mng/vectortile/G_layer_t/config.js"></script>
+    
+ <!--
+  <script src="lib/layers_mng/vectortile/convertGridVectortoGeoJson.js"></script>
+  -->
+  <script src="lib/layers_mng/vectortile/convertGridVectortoGeoJsonGeneric.js"></script>
+ <!--
+  <script src="lib/layers_mng/vectortile/convertGridVectortoGeoJsonByLayerName.js"></script>
+   -->  
+  
+<!-- kml -->
+<script type="text/javascript" src="/field_work_libs/leaflet-kml-master/L.KML.js"></script>
+<!--
+<script src="lib/import_export/csv/importKML.js"></script>
+-->
+
+<!-- labels -->
+<link rel="stylesheet" href="/field_work_libs/Leaflet.label-master/dist/leaflet.label.css" />
+<script src="/field_work_libs/Leaflet.label-master/dist/leaflet.label.js"></script>
+
+<!-- spread. sheet-->
+  <link rel="stylesheet" href="/field_work_libs/SlickGrid-master/slick.grid.css" type="text/css"/>
+
+  <script src="/field_work_libs/SlickGrid-master/slick.core.js"></script>
+  <script src="/field_work_libs/SlickGrid-master/slick.dataview.js"></script>
+  <script src="/field_work_libs/SlickGrid-master/slick.editors.js"></script>
+  <script src="/field_work_libs/SlickGrid-master/slick.formatters.js"></script>
+  <script src="/field_work_libs/SlickGrid-master/slick.grid.js"></script>
+
+  <script src="/field_work_libs/SlickGrid-master/plugins/slick.cellrangeselector.js"></script>
+  <script src="/field_work_libs/SlickGrid-master/plugins/slick.cellselectionmodel.js"></script>
+  <script src="/field_work_libs/SlickGrid-master/plugins/slick.rowselectionmodel.js"></script>
+  <script src="/field_work_libs/SlickGrid-master/plugins/slick.rowmovemanager.js"></script>
+
+  <link rel="stylesheet" href="/field_work_libs/SlickGrid-master/examples/examples.css" type="text/css"/>
+  
+  <!-- slick grid filter -->
+  <!--
+  <link rel="stylesheet" href="test/slickgrid_filter/css/ui-lightness/jquery-ui-1.10.3.custom.css"/>
+  <link rel="stylesheet" href="test/slickgrid_filter/css/examples.css"/>
+  -->
+ 
+   <link rel="stylesheet" href="./slickgrid_filter/css/ui-lightness/jquery-ui-1.10.3.custom.css"/>
+   <link rel="stylesheet" href="./slickgrid_filter/css/examples.css"/>
+<!-- tables -->
+  <link rel="stylesheet" href="/field_work_libs/leaflet.table-master/leaflet.table.css" />
+  <link rel="stylesheet" href="/field_work_libs/leaflet.table-master/supagrid.css" />
+
+  <script src="/field_work_libs/leaflet.table-master/supagrid.js" type="text/javascript"></script>
+  <script src="/field_work_libs/leaflet.table-master/leaflet.table.js" type="text/javascript"></script>
+  
+  <!-- overview map -->
+  <link rel="stylesheet" href="/field_work_libs/Leaflet-MiniMap-master/src/Control.MiniMap.css" />
+  <script src="/field_work_libs/Leaflet-MiniMap-master/src/Control.MiniMap.js" type="text/javascript"></script>
+  
+		<!-- editor -->
+		<link rel="stylesheet" href="/field_work_libs/cleditor1_4_5/jquery.cleditor.css" />
+		
+		<script src="/field_work_libs/cleditor1_4_5/jquery.cleditor.js"></script>
+		
+<!--
+ query management
+  -->
+<script src="lib/query/config.js"></script>
+
+<script src="lib/query/attr_query/config.js"></script>
+<script src="lib/query/attr_query/drawAttrQueryMap.js"></script>
+
+<script src="lib/query/sp_query/config.js"></script>
+<script src="lib/query/sp_query/execSpQuery.js"></script>
+
+<script src="lib/query/sp_query/drawSpQueryMap.js"></script>
+
+<script src="lib/query/sp_query/intersects.js"></script>
+<script src="lib/query/sp_query/touches.js"></script>
+<script src="lib/query/sp_query/equals.js"></script>
+<script src="lib/query/sp_query/contains.js"></script>
+<script src="lib/query/sp_query/crosses.js"></script>
+<script src="lib/query/sp_query/overlaps.js"></script>
+
+<script src="lib/query/sp_query/disjoint.js"></script>
+
+<script src="lib/query/sp_query/within.js"></script>
+
+<script src="lib/query/geocoding/config.js"></script>
+
+ <!-- Wikipedia    --> 
+  <script src="/field_work_libs/leaflet-wikipedia-master/build/leaflet-wikipedia.js"></script>
+   <script src="lib/query/wiki/config.js"></script>
+
+<!-- geoviz management -->
+<script type="text/javascript" src="/field_work_libs/turf_js/turf.js" charset="utf-8"></script>
+
+ <link rel="stylesheet" type="text/css" href="lib/geoviz/styles.css">
+<script src="lib/geoviz/config.js"></script>
+<script src="lib/geoviz/colorbrewer.js"></script>
+
+<script src="lib/geoviz/choro/config.js"></script>
+<script src="lib/geoviz/choro/drawChoroMap.js"></script>
+<script src="lib/geoviz/choro/draw3dchoro.js"></script>
+<script src="lib/geoviz/choro/landuse.js"></script>
+
+<script src="lib/geoviz/circles/config.js"></script>
+<script src="lib/geoviz/circles/drawCircleMap.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/geoviz/circles/styles.css">
+
+<script src="lib/geoviz/contour/config.js"></script>
+<script src="lib/geoviz/contour/draw3dcontour.js"></script>
+
+<!-- labels -->
+<script src="lib/geoviz/labels/config.js"></script>
+<script src="lib/geoviz/labels/drawLabels.js"></script>
+<script src="lib/geoviz/labels/drawLabelFromDB.js"></script>
+<script src="lib/geoviz/labels/drawLabelsOfVectortile.js"></script>
+
+<link rel="stylesheet" href="lib/geoviz/labels/styles.css" />
+
+<script src="lib/geoviz/labels/redrawLabels.js"></script>
+
+<script src="/field_work_libs/Leaflet.LayerGroup.Collision-master/src/Leaflet.LayerGroup.Collision.js"></script>
+
+<!-- geo-processing -->
+<script src="lib/geoprocessing/config.js"></script>
+
+<!-- jsts -->
+<!--
+<script src="https://cdn.rawgit.com/bjornharrtell/jsts/gh-pages/1.0.2/jsts.min.js"></script>
+<script src="https://cdn.rawgit.com/bjornharrtell/jsts/gh-pages/1.1.1/jsts.min.js"></script>
+-->
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsts/2.6.1/jsts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsts/2.6.1/jsts.min.js.map"></script>
+-->
+    
+  <script type="text/javascript" src="/jsts-0.17.0/lib/javascript.util.min.js"></script>  
+  <script type="text/javascript" src="/jsts-0.17.0/lib/jsts.js"></script>
+  
+  <!--
+  <script type="text/javascript" src="https://raw.github.com/olooney/attache-array-js/master/attache.array.min.js"></script>
+  -->
+  
+<!-- buffer -->
+<script src="lib/geoprocessing/buffer/config.js"></script>
+<script src="lib/geoprocessing/buffer/buildBuffer.js"></script>
+
+<!-- union -->
+<script src="lib/geoprocessing/union/config.js"></script>
+<script src="lib/geoprocessing/union/union.js"></script>
+
+<!-- dissolve -->
+<script src="lib/geoprocessing/dissolve/config.js"></script>
+<script src="lib/geoprocessing/dissolve/dissolve.js"></script>
+		
+<!-- clip -->
+<script src="lib/geoprocessing/clip/config.js"></script>
+<script src="lib/geoprocessing/clip/clip.js"></script>
+		
+<!-- diff -->
+<script src="lib/geoprocessing/difference/config.js"></script>
+<script src="lib/geoprocessing/difference/diff.js"></script>
+
+<!-- heat map -->
+<script src="/field_work_libs/Leaflet.heat-gh-pages/dist/leaflet-heat.js"></script>
+
+<script src="lib/geoviz/heatmap/config.js"></script> 
+<script src="lib/geoviz/heatmap/drawHeatMap.js"></script> 
+
+<!-- voronoi -->
+<script src="lib/geoviz/voronoi/config.js"></script>
+<script src="lib/geoviz/voronoi/buildVoronoi.js"></script>
+
+<!-- jstat -->
+<script src="/field_work_libs/jstat-master/dist/jstat.js"></script>
+
+<!-- mesh or grid -->
+<script src="/field_work_libs/fttsus/worldmesh/js/gsiucode.js"></script>
+<!--
+<script src="https://www.fttsus.jp/worldmesh/js/gsiucode.js"></script>
+-->
+
+<!-- 3D -->
+ <!-- Cesium --> 
+ <!--
+ <script src="https://cesiumjs.org/Cesium/Build/Cesium/Cesium.js"></script>
+<link href="https://cesiumjs.org/Cesium/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
+-->
+
+<script src="https://maps.gsi.go.jp/globe/Build/Cesium/Cesium.js"></script>
+
+<link href="https://maps.gsi.go.jp/globe/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
+
+<!--
+<link href="libs/gsimaps-globe-gh-pages/globe/Build/CesiumUnminified/Widgets/widgets.css" rel="stylesheet" />
+
+<script type="text/javascript" src="libs/gsimaps-globe-gh-pages/globe/Build/CesiumUnminified/Cesium.js"></script>
+-->
+<!--
+<script type="text/javascript" src="libs/gsimaps-globe-gh-pages/globe/resource/JapanGSIGeojsonProvider.js"></script>
+
+<script type="text/javascript" src="libs/gsimaps-globe-gh-pages/globe/resource/JapanGSIImageryProvider.js"></script>
+
+<script type="text/javascript" src="libs/gsimaps-globe-gh-pages/globe/resource/JapanGSICombineImageryProvider.js"></script>
+
+<script type="text/javascript" src="libs/gsimaps-globe-gh-pages/globe/resource/JapanGSIVectorTileProvider.js"></script>
+-->
+
+<script type="text/javascript" src="/field_work_libs/gsimaps-globe-gh-pages/globe/resource/JapanGSITerrainProvider.js"></script>
+<!--
+<script type="text/javascript" src="libs/gsimaps-globe-gh-pages/globe/resource/proj4js-combined.js"></script>
+
+<script type="text/javascript" src="libs/gsimaps-globe-gh-pages/globe/resource/ma.js"></script>
+
+
+<script type="text/javascript" src="libs/gsimaps-globe-gh-pages/globe/resource/gsiglobe.js"></script>
+
+<script type="text/javascript" src="libs/gsimaps-globe-gh-pages/globe/resource/index.js"></script>
+-->
+
+<!-- DEM -->
+<!--
+  <script src='libs/Cesium-JapanGSI-master/JapanGSIImageryProvider.js'  charset="utf-8"></script>
+ <script src='libs/Cesium-JapanGSI-master/JapanGSITerrainProvider.js'  charset="utf-8"></script>
+ -->
+
+<!-- 3d lib -->
+
+ <link rel="stylesheet" type="text/css" href="lib/geoviz/threed/styles.css">
+ 
+<script src="lib/geoviz/threed/config.js"></script>
+<script src="lib/geoviz/threed/createThreeDView.js"></script>
+<script src="lib/geoviz/threed/ini.js"></script>
+
+<script src="lib/geoviz/threed/draw3duserfeatures.js"></script>
+
+<!-- MR -->
+<script src="lib/geoviz/mr/config.js"></script>
+
+<!-- memo layer -->
+<script src="lib/memo/config.js"></script>
+<script src="lib/memo/createMemoLayer.js"></script>
+<script src="lib/memo/hideMemoLayer.js"></script>
+<script src="lib/memo/showMemoLayer.js"></script>
+<script src="lib/memo/removeMemoLayer.js"></script>
+<script src="lib/memo/closeMemoTool.js"></script>
+
+<!-- field recording -->
+<script src="lib/tracking/config.js"></script>
+
+<!-- street view -->
+<!--
+<script src="lib/tracking/street_view/config.js"></script>
+<script src="lib/tracking/street_view/initPanorama.js"></script>
+
+<script src="lib/tracking/street_view/createForm.js"></script>
+-->
+
+<!-- gps -->
+<script src="lib/tracking/gps/config.js"></script>
+<script src="lib/tracking/gps/startCurrentLocLogging.js"></script>
+<script src="lib/tracking/gps/stopCurrentLocLogging.js"></script>
+
+<!-- reverse geocoding -->
+<script src="lib/tracking/geocoding/reverseGeoCoding/config.js"></script>
+
+<script src="lib/tracking/dem/config.js"></script> <!-- dem query -->
+
+<!-- photo -->
+<script type="text/javascript" src="/field_work_libs/exif-js-master/exif.js" charset="utf-8"></script>
+<!--
+<script src="lib/photo/config.js"></script>
+-->
+<script src="lib/photo/config_canvasblob.js"></script>
+
+<script src="lib/photo/removePhotos.js"></script>
+<script src="lib/photo/removePhoto.js"></script>
+<script src="lib/photo/processArchivePhoto.js"></script>
+
+<script src="lib/photo/accessPhotoArchive2.js"></script>
+
+<!-- leaflet.photo -->
+<!--
+<link rel="stylesheet" href="/field_work_libs/Leaflet.Photo-gh-pages/examples/lib/cluster/MarkerCluster.css" />
+<script src="/field_work_libs/Leaflet.Photo-gh-pages/examples/lib/cluster/leaflet.markercluster.js"></script>
+-->
+<link rel="stylesheet" href="/field_work_libs/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="/field_work_libs/Leaflet.Photo-gh-pages/Leaflet.Photo.css" />
+		
+<script src="/field_work_libs/Leaflet.Photo-gh-pages/examples/lib/reqwest.min.js"></script>
+
+<script src="/field_work_libs/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js"></script>	
+		
+<script src="/field_work_libs/Leaflet.Photo-gh-pages/Leaflet.Photo.js"></script>	
+
+<!-- route map -->
+<script src="lib/routemap/config.js"></script>
+
+<!-- 
+collabo 
+-->
+<script src="lib/collabo/config.js"></script>
+
+<!-- geo chat -->
+<!--
+<script src="lib/collabo/geochat/config.js"></script>
+<script src="lib/collabo/geochat/geochat.js"></script>
+-->
+
+<!-- geo chat 2-->
+<script src="lib/collabo/geochat2/config.js"></script>
+<script src="lib/collabo/geochat2/chat.js"></script>
+<script src="lib/collabo/geochat2/sendGeoFeatures.js"></script>
+
+<link rel="stylesheet" href="lib/collabo/geochat2/style.css" >
+
+<!-- project -->
+<script src="lib/collabo/project/config.js"></script>
+
+
+
+<!-- setup all -->
+<script src="lib/ini/config.js"></script>
+
+<script src="lib/ini/defaultLayers.js"></script>
+<script src="lib/ini/defaultlayers/setupG_layer_c.js"></script>
+<script src="lib/ini/defaultlayers/setupG_layer_t.js"></script>
+<script src="lib/ini/defaultlayers/setupFude.js"></script>
+
+<script src="lib/ini/events.js"></script>
+<script src="lib/ini/mapevents.js"></script>
+
+<!--
+<link rel="stylesheet" href="libs/collabo/geochat/styles.css" />
+-->
+     
+	<style>	
+		html, body {
+				height: 100%;
+				margin: 0;
+			}
+			#map {
+					width: 600px;
+					height: 400px;
+				}
+	</style>
+
+			
+	<style>
+		body { padding: 0; margin: 0; }
+		 #map { height: 100%; width: 100vw; }
+	</style>
+	
+</head>
+<body>
+<div id='map'></div>
+
+	<!--
+       <style>
+      
+           #info-pane {
+               position: absolute;
+               top: 10px;
+               right: 10px;
+               z-index: 10;
+               padding: 1em;
+               background: white;
+               text-align: right;
+           }
+       
+       #form {
+           display: none;
+       }
+           
+	  
+	  .legendinfo {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.legendinfo h4 {
+    margin: 0 0 5px;
+    color: #777;
+	}
+	
+     .legend {
+      line-height: 18px;
+      color: #555;
+     }
+     
+     .legend i {
+       width: 18px;
+       height: 18px;
+       float: left;
+        margin-right: 8px;
+         opacity: 0.7;
+       }
+     
+       </style>
+       -->
+       
+       <div id='info-pane' class='leaflet-bar'>
+            
+       </div>
+<!--       
+  <div id="grid" title="結果" style="width:600px;height:400px;"></div> 
+-->  
+             <!--       
+           <div id="grid_layer_manager" title="レイヤ管理" style="width:350px;height:250px;"></div> 
+           -->
+            <!--                     
+            <div id="address_table_manager" title="住所検索結果" style="width:400px;height:180px;"></div> 
+            -->
+          <!--        
+         <div id="feature_property_table" title="" style="width:400px;height:180px;"></div> 
+         -->
+         <!--
+         <div id="data_entry_dialog" title="" style="width:400px;height:180px;"></div> 
+         -->
+         <!--
+           <div id="choropleth_dialog" title="" style="width:400px;height:180px;"></div> 
+         -->
+         <!--
+         <div id="memo">
+           <textarea id="input" name="input"></textarea>
+         </div>
+         -->
+           <!--
+         <div id="memo1">
+           <textarea id="input1" name="input1"></textarea>
+         </div>
+         -->
+         
+         <div id="sel_item_list">
+         </div>
+         <!--
+          <div id="selattrdef_diag">
+                 
+             <div id="selattrdef_valuelist">               
+             </div>
+              <div id="new_valuelist" style="display:none;">
+             <input id="new_valuelist_name" type="text" value="" name="new_valuelist_name" placeholder="新規選択属性リスト名"><button id="delete_valuelist" onClick="delete_valueList()">削除</button>
+             </div>
+               
+             <p>
+             <div id="selattrdef_table" title="選択リストの管理" style="width:400px;height:180px;"></div> 
+          </div>
+          -->
+          
+          <style>
+          	.slickgrid, 
+		.slickgrid *,
+		.slick-header-column {
+    			box-sizing: content-box;
+    			-moz-box-sizing: content-box;
+    			-webkit-box-sizing: content-box;
+		}
+	    </style>
+          
+           <style>
+              .leaflet-control-container::after {
+              content: url(https://maps.gsi.go.jp/image/map/crosshairs.png);
+              z-index: 1000;
+             display: block;
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             }
+          </style>
+  
+<script src="geoweb.js"></script>
+
+</body>
+</html>
